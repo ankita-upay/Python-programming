@@ -1,0 +1,25 @@
+Copied from : http://www.wellho.net/mouth/418_Difference-between-import-and-from-in-Python.html
+Difference between import and from in Python
+
+Python's "import" loads a Python module into its own namespace, so that you have to add the module name followed by a dot in front of references to any names from the imported module that you refer to:
+
+import feathers
+duster = feathers.ostrich("South Africa")
+
+"from" loads a Python module into the current namespace, so that you can refer to it without the need to mention the module name again:
+
+from feathers import *
+duster = ostrich("South Africa")
+
+or
+
+from feathers import ostrich
+duster = ostrich("South Africa")
+
+Q Why are both import and from provided? Can't I always use from?
+
+A If you were to load a lot of modules using from, you would find sooner or later that there was a conflict of names; from is fine for a small program but if it was used throughout a big program, you would hit problems from time to time
+
+Q Should I always use import then?
+
+A No ... use import most of the time, but use from is you want to refer to the members of a module many, many times in the calling code; that way, you save yourself having to write "feather." (in our example) time after time, but yet you don't end up with a cluttered namespace. You could describe this approach as being the best of both worlds.
